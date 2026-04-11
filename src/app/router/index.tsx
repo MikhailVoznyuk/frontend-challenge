@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, Outlet} from "react-router";
 import {Header} from "@/widgets/header";
-import { AllCatsPage} from "@/pages/all-cats/AllCatsPage.tsx";
-import { FavoriteCatsPage } from "@/pages/favorite-cats/FavoriteCatsPage.tsx";
+import { AllCatsPage } from "@/pages/all-cats";
+import { FavoriteCatsPage } from "@/pages/favorite-cats";
 
 function RootLayout() {
     return (
