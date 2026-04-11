@@ -1,16 +1,15 @@
 import type {Cat} from "@/entities/cat/model/types";
 import {CAT_API_KEY} from "@/shared/config/env.ts";
 
-type GetCatsParams = {
-    limit?: number;
-}
-export async function getCats({limit=15}: GetCatsParams): Promise<Cat[]> {
+const API_URL = 'https://api.thecatapi.com/v1/images/search';
+
+export async function getCats(limit:number=15): Promise<Cat[]> {
     if (!CAT_API_KEY) {
         throw new Error(`CAT_API_KEY is not defined`);
     }
 
     const res = await fetch(
-        `https://api.thecatapi.com/v1/images/search?limit=${limit}`,
+        `${API_URL}?limit=${limit}`,
         {
             headers: {
                 'x-api-key': CAT_API_KEY
