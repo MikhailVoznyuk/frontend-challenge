@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Cat } from "@/entities/cat/model/types.ts";
 
-type FavoriteState = {
+type FavoritesState = {
     items: Cat[];
 }
 
-const initialState: FavoriteState = {
+const initialState: FavoritesState = {
     items: [],
 }
 
