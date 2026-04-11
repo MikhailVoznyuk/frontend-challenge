@@ -1,0 +1,1 @@
+export { FavoriteCatsPage } from '@/pages/favorite-cats/ui/FavoriteCatsPage'

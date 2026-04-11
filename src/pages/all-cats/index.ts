@@ -1,0 +1,1 @@
+export { AllCatsPage } from "@/pages/all-cats/ui/AllCatsPage.tsx";
