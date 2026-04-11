@@ -1,0 +1,1 @@
+export {CatsGrid} from "@/widgets/cats-grid/ui/CatsGrid.tsx";
