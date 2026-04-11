@@ -1,0 +1,1 @@
+export {TabLink} from "@/shared/ui/navigation/TabLink.tsx";
