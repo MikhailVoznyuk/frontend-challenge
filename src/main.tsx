@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { RouterProvider } from "react-router";
 import { store } from '@/app/store';
 import { router } from "@/app/router";
+import '@fontsource-variable/roboto'
 import './index.css'
 
 
