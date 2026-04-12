@@ -13,7 +13,7 @@ export function CatCard({cat}: Props) {
     const isFavorite = useAppSelector(selectIsFavorite(cat.id));
 
     return (
-        <section className='relative w-56 h-56'>
+        <section className='relative w-56 h-56 group/cat'>
             <img
                 src={cat.url}
                 alt='cat'
@@ -21,12 +21,12 @@ export function CatCard({cat}: Props) {
                 decoding='async'
                 width={cat.width}
                 height={cat.height}
-                className='w-full h-full object-cover object-center'
+                className='w-full h-full object-cover object-center group-hover/cat:scale-110 transition-all duration-300 hover:shadow-[2px_2px_6px_3px_rgba(0,0,0,0.34)]'
             />
             <HeartButton
                 isActive={isFavorite}
                 onClick={() => dispatch(toggleFavorite(cat))}
-                className='absolute right-4 bottom-4'
+                className='absolute opacity-0 right-2 bottom-2 group-hover/cat:right-0 group-hover/cat:bottom-0 group-hover/cat:opacity-100 duration-300'
             />
         </section>
     )
