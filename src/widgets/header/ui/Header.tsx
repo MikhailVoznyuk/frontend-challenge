@@ -49,8 +49,8 @@ export function Header() {
                     'absolute top-full h-0 w-full flex flex-col gap-4 bg-accent  overflow-hidden transition-all duration-300',
                     isNavOpen && 'h-[144px] shadow-[0_4px_4px_0_rgba(0,0,0,0.24)]'
                 )}>
-                    <TabLink to='/all'>Все котики</TabLink>
-                    <TabLink to='/favorites'>Любимые котики</TabLink>
+                    <TabLink onClick={() => setIsNavOpen(false)} to='/all'>Все котики</TabLink>
+                    <TabLink onClick={() => setIsNavOpen(false)} to='/favorites'>Любимые котики</TabLink>
                 </div>
             </div>
 

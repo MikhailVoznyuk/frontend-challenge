@@ -59,17 +59,17 @@ export function AllCatsPage() {
             <div ref={sentinelRef} className='h-10' />
 
             {status === 'loading' && cats.length === 0 &&
-                <StatusBar>Загружаю котиков...</StatusBar>
+                <StatusBar>Загружаем котиков...</StatusBar>
             }
             {status === 'error' &&
-                <StatusBar> {`Ошибка при загрузке: ${error}`}</StatusBar>
+                <StatusBar> {`Котики не загрузились: ${error}`}</StatusBar>
             }
             {fetchingMore &&
-                <StatusBar>Загружаю еще котиков...</StatusBar>
+                <StatusBar>Загружаем еще котиков...</StatusBar>
             }
             {
                 !hasMore && cats.length > 0 &&
-                <StatusBar>Котики закончились</StatusBar>
+                <StatusBar>Котики закончились.</StatusBar>
             }
         </Container>
 
