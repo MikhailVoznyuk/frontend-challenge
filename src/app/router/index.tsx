@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, Outlet} from "react-router";
+import { createHashRouter, Navigate, Outlet} from "react-router";
 import {Header} from "@/widgets/header";
 import { AllCatsPage } from "@/pages/all-cats";
 import { FavoriteCatsPage } from "@/pages/favorite-cats";
@@ -12,7 +12,7 @@ function RootLayout() {
     )
 }
 
-export const router = createBrowserRouter([{
+export const router = createHashRouter([{
     path: '/',
     Component: RootLayout,
     children: [
