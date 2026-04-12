@@ -3,13 +3,17 @@ import {CAT_API_KEY} from "@/shared/config/env.ts";
 
 const API_URL = 'https://api.thecatapi.com/v1/images/search';
 
-export async function getCats(limit:number=15): Promise<Cat[]> {
+type GetCatsParams = {
+    page?: number;
+    limit?: number;
+}
+export async function getCats({page=0, limit=15}: GetCatsParams): Promise<Cat[]> {
     if (!CAT_API_KEY) {
         throw new Error(`CAT_API_KEY is not defined`);
     }
 
     const res = await fetch(
-        `${API_URL}?limit=${limit}`,
+        `${API_URL}?limit=${limit}&page=${page}`,
         {
             headers: {
                 'x-api-key': CAT_API_KEY
