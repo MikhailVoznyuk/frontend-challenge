@@ -15,13 +15,14 @@ export function HeartButton({isActive, onClick, className}: Props) {
             onClick={onClick}
 
             className={twMerge(
-            'relative size-12',
+            'relative size-12 cursor-pointer',
                 className,
             )}
         >
             <span className={twMerge(
                 'relative inline-block size-full text-heart',
                 isActive && 'text-heart-accent',
+                isHover && 'text-heart'
                 )}
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
