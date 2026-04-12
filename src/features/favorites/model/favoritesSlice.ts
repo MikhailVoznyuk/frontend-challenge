@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Cat } from "@/entities/cat/model/types.ts";
 
-type FavoriteState = {
+type FavoritesState = {
     items: Cat[];
 }
 
-const initialState: FavoriteState = {
+const initialState: FavoritesState = {
     items: [],
 }
 
@@ -16,7 +16,7 @@ const favoritesSlice = createSlice({
         setFavorites: (state, action: PayloadAction<Cat[]>) => {
             state.items = action.payload;
         },
-        toggleFavorites: (state, action: PayloadAction<Cat>) => {
+        toggleFavorite: (state, action: PayloadAction<Cat>) => {
             const cat = action.payload;
             const exists = state.items.some((item) => item.id === cat.id);
 
@@ -35,7 +35,7 @@ const favoritesSlice = createSlice({
 
 export const {
     setFavorites,
-    toggleFavorites,
+    toggleFavorite,
     removeFavorite,
     clearFavorites,
 } = favoritesSlice.actions;

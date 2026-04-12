@@ -1,10 +1,15 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2196F3
+  --font-sans: 'Roboto', sans-serif;
+  --color-accent: #2196F3;
+  --color-primary: #1E88E5;
+  --color-heart: #F24E1E;
+  --color-heart-accent: #FF3A00
 }
 
 body {
+  font-family: var(--font-sans);
   margin: 0;
 }
 

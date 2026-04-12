@@ -14,7 +14,7 @@ const initialState: CatsState = {
     error: null
 }
 
-const fetchCats = createAsyncThunk<Cat[], number | undefined>(
+export const fetchCats = createAsyncThunk<Cat[], number | undefined>(
     'cats/fetchCats',
     async (limit?: number) => {
         return await getCats(limit);

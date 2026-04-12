@@ -1,9 +1,28 @@
 import { configureStore } from '@reduxjs/toolkit';
-import TabsSliceReducer from '@/features/tabs/tabsSlice.ts'
+import catsReducer from '@/features/cats/model/catsSlice';
+import favoriteReducer from '@/features/favorites/model/favoritesSlice';
+import { favoriteStorage } from "@/features/favorites/lib/favoriteStorage.ts";
+
+const preloadedFavorites = favoriteStorage.get();
 
 export const store = configureStore({
     reducer: {
-        tabs: TabsSliceReducer,
+        cats: catsReducer,
+        favorites: favoriteReducer,
+    },
+    preloadedState: {
+        favorites: {items: preloadedFavorites},
+    }
+})
+
+let prevFavorites = store.getState().favorites.items;
+
+store.subscribe(() => {
+    const nextFavorites = store.getState().favorites.items;
+
+    if (nextFavorites !== prevFavorites) {
+        favoriteStorage.set(nextFavorites);
+        prevFavorites = nextFavorites;
     }
 })
 
