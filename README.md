@@ -1,73 +1,128 @@
-# React + TypeScript + Vite
+# Cat Pinterest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое задание на позицию Front-end стажёра.
 
-Currently, two official plugins are available:
+## Описание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+В приложении реализованы две основные вкладки:
 
-## React Compiler
+- **Все котики** — список карточек с изображениями, полученными с внешнего API;
+- **Любимые котики** — список карточек, которые пользователь добавил в избранное.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Пользователь может добавлять изображения в избранное и удалять их из избранного. Избранные котики сохраняются на стороне клиента и восстанавливаются при повторном открытии приложения.
 
-## Expanding the ESLint configuration
+## Реализованный функционал
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- загрузка изображений котиков с внешнего API;
+- отображение списка всех котиков;
+- добавление котиков в избранное;
+- удаление котиков из избранного;
+- сохранение избранных котиков в `localStorage`;
+- отдельная страница с избранными котиками;
+- адаптивная верстка для мобильных устройств;
+- бесконечная прокрутка на странице всех котиков.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Стек технологий
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React**
+- **TypeScript**
+- **Vite**
+- **React Router**
+- **Redux Toolkit**
+- **Tailwind CSS**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Архитектура проекта
+
+Проект организован по слоям для разделения ответственности между частями приложения:
+
+- `src/app` — инициализация приложения, роутинг, store;
+- `src/pages` — страницы приложения;
+- `src/widgets` — составные UI-блоки;
+- `src/entities` — сущности предметной области;
+- `src/features` — пользовательские сценарии и бизнес-логика;
+- `src/shared` — общие утилиты, API, конфигурация и переиспользуемые UI-компоненты.
+
+## Установка и запуск
+
+### 1. Установка зависимостей
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Запуск в режиме разработки
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### 3. Сборка проекта
+
+```bash
+npm run build
+```
+
+### 4. Предпросмотр production-сборки
+
+```bash
+npm run preview
+```
+
+## Переменные окружения
+
+Для работы приложения требуется API-ключ The Cat API.
+
+Создайте файл `.env.local` в корне проекта и добавьте в него переменную:
+
+```env
+VITE_CAT_API_KEY=your_api_key
+```
+
+## Особенности реализации
+
+### Работа с API
+
+Для получения изображений используется публичное API сервиса The Cat API.  
+Загрузка данных организована через асинхронные действия Redux Toolkit.
+
+### Управление состоянием
+
+Глобальное состояние приложения хранится в Redux Toolkit.  
+В store вынесены:
+
+- список загруженных котиков;
+- состояние загрузки;
+- данные об ошибках;
+- список избранных котиков.
+
+### Хранение избранного
+
+Избранные котики сохраняются в `localStorage`, поэтому состояние не теряется после обновления страницы.
+
+### Роутинг
+
+Навигация между вкладками реализована через React Router.
+
+### Бесконечная прокрутка
+
+На странице всех котиков реализована бесконечная подгрузка новых карточек при прокрутке списка вниз.
+
+## Деплой
+
+Проект подготовлен для деплоя на **GitHub Pages** через **GitHub Actions**.
+
+## Соответствие тестовому заданию
+
+В рамках тестового задания реализованы все основные требования:
+
+- проект использует API для просмотра котиков;
+- по умолчанию открывается вкладка со всеми котиками;
+- у карточки есть возможность добавить котика в избранное и убрать из избранного;
+- избранные котики хранятся на клиенте;
+- на вкладке избранных отображаются добавленные карточки;
+- реализована адаптивность;
+- дополнительно реализована бесконечная прокрутка.
+
+## Автор
+
+Михаил Вознюк.
