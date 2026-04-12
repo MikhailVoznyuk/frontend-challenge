@@ -26,7 +26,7 @@ export function CatCard({cat}: Props) {
             <HeartButton
                 isActive={isFavorite}
                 onClick={() => dispatch(toggleFavorite(cat))}
-                className='absolute opacity-0 right-2 bottom-2 group-hover/cat:right-0 group-hover/cat:bottom-0 group-hover/cat:opacity-100 duration-300'
+                className='absolute sm:opacity-0 right-2 bottom-2 group-hover/cat:right-0 group-hover/cat:bottom-0 group-hover/cat:opacity-100 duration-300'
             />
         </section>
     )

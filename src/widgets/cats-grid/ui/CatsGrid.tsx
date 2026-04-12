@@ -18,7 +18,7 @@ export function CatsGrid({cats, variant}: Props) {
     }
     return (
         <section
-            className='w-full px-[62px] py-[52px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[52px]'
+            className='w-full px-4 sm:px-8 md:px-[62px] py-4 sm:py-8 md:py-[52px] grid justify-center grid-cols-[repeat(1,auto)]  sm:grid-cols-[repeat(2,auto)] 2 md:grid-cols-[repeat(3,auto)]  lg:grid-cols-[repeat(4,auto)]  xl:grid-cols-[repeat(5,auto)]  gap-4 sm:gap-8 md:gap-[52px]'
         >
 
             {cats.map((cat) => <CatCard key={cat.id} cat={cat} />)}
